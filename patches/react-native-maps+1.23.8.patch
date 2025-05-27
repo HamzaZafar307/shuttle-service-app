@@ -1,0 +1,33 @@
+diff --git a/node_modules/react-native-maps/lib/commonjs/index.js b/node_modules/react-native-maps/lib/commonjs/index.js
+index 1234567..abcdefg 100644
+--- a/node_modules/react-native-maps/lib/commonjs/index.js
++++ b/node_modules/react-native-maps/lib/commonjs/index.js
+@@ -1,6 +1,26 @@
+ "use strict";
+ 
+-var _NativeModules = require("react-native").NativeModules;
++var _reactNative = require("react-native");
++
++// Create a mock implementation of the RNMapsAirModule
++const mockRNMapsAirModule = {
++  create: () => {},
++  animateToRegion: () => {},
++  animateToCoordinate: () => {},
++  fitToElements: () => {},
++  fitToSuppliedMarkers: () => {},
++  fitToCoordinates: () => {},
++  setMapBoundaries: () => {},
++  takeSnapshot: () => Promise.resolve(''),
++  pointForCoordinate: () => Promise.resolve({ x: 0, y: 0 }),
++  coordinateForPoint: () => Promise.resolve({ latitude: 0, longitude: 0 }),
++};
++
++// Safely handle the native module registration
++if (_reactNative.Platform.OS !== 'web' && !_reactNative.NativeModules.RNMapsAirModule) {
++  // Use Object.defineProperty to avoid conflicts
++  Object.defineProperty(_reactNative.NativeModules, 'RNMapsAirModule', { value: mockRNMapsAirModule, writable: false, configurable: true });
++}
++
++var _NativeModules = _reactNative.NativeModules;
+ 
+ var _MapMarker = _interopRequireDefault(require("./MapMarker"));

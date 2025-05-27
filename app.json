@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Mobily's Shuttle",
+    "slug": "vMobily's Shuttle",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vehicletracker.app",
+      "config": {
+        "googleMapsApiKey": "AIzaSyAZwVRCmrkePL3HhXwNEMBkbyRFHO1BDHY"
+      }
+    },
+    "android": {
+      "package": "com.vehicletracker.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAZwVRCmrkePL3HhXwNEMBkbyRFHO1BDHY"
+        }
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Vehicle Tracker to use your location."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "vehicle-tracker"
+      }
+    }
+  }
+}

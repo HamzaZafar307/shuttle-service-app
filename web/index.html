@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mobily's Shuttle</title>
+  <meta name="description" content="Real-time vehicle tracking application">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  
+  <!-- Web app manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- iOS specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="../assets/icon.png">
+  
+  <!-- Theme color -->
+  <meta name="theme-color" content="#3498db">
+  
+  <!-- Custom Fonts -->
+  <style>
+    /* OpenSans Font Family */
+    @font-face {
+      font-family: 'OpenSans-Regular';
+      src: url('../fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'OpenSans-Light';
+      src: url('../fonts/OpenSans/OpenSans-Light.ttf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'OpenSans-Semibold';
+      src: url('../fonts/OpenSans/OpenSans-Semibold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'OpenSans-Bold';
+      src: url('../fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'OpenSans-ExtraBold';
+      src: url('../fonts/OpenSans/OpenSans-ExtraBold.ttf') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    /* Scandia Font Family */
+    @font-face {
+      font-family: 'Scandia-Regular';
+      src: url('../fonts/Scandia/Scandia-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Scandia-Light';
+      src: url('../fonts/Scandia/Scandia-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Scandia-Medium';
+      src: url('../fonts/Scandia/Scandia-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Scandia-Bold';
+      src: url('../fonts/Scandia/Scandia-Bold.otf') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }
+    
+    /* Additional Scandia font-family for React Native Web compatibility */
+    @font-face {
+      font-family: 'Scandia';
+      src: url('../fonts/Scandia/Scandia-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Scandia';
+      src: url('../fonts/Scandia/Scandia-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Scandia';
+      src: url('../fonts/Scandia/Scandia-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Scandia';
+      src: url('../fonts/Scandia/Scandia-Bold.otf') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    /* SimplonNorm Font Family */
+    @font-face {
+      font-family: 'SimplonNorm-Regular';
+      src: url('../fonts/SimplonNorm/SimplonNorm-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SimplonNorm-Light';
+      src: url('../fonts/SimplonNorm/SimplonNorm-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SimplonNorm-Medium';
+      src: url('../fonts/SimplonNorm/SimplonNorm-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SimplonNorm-Bold';
+      src: url('../fonts/SimplonNorm/SimplonNorm-Bold.otf') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    /* Arabic Font Family */
+    @font-face {
+      font-family: 'sst-arabic-medium';
+      src: url('../fonts/Arabic/sst-arabic/sst-arabic-medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SSTArabicRoman';
+      src: url('../fonts/Arabic/sst-arabic-roman/SSTArabicRoman.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+  
+  <style>
+    /* Base styles */
+    html, body, #root {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Scandia-Regular', 'OpenSans-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #f8f9fa;
+    }
+    
+    /* Loading screen */
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: #f8f9fa;
+    }
+    
+    .loading-text {
+      font-family: 'Scandia-Medium', 'OpenSans-Semibold', sans-serif;
+      font-size: 20px;
+      color: #3498db;
+      margin-bottom: 20px;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(52, 152, 219, 0.3);
+      border-radius: 50%;
+      border-top-color: #3498db;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* App-specific styles */
+    .title {
+      font-family: 'Scandia-Bold', 'Scandia', sans-serif !important;
+      font-weight: bold !important;
+    }
+    
+    /* Google Maps styles */
+    .gm-style-iw {
+      border-radius: 8px !important;
+      padding: 12px !important;
+    }
+    
+    .gm-style-iw-d {
+      overflow: hidden !important;
+    }
+    
+    .gm-style-iw-t::after {
+      background: linear-gradient(45deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%) !important;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="loading-container">
+      <div class="loading-text">Loading Mobily's Shuttle...</div>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+</body>
+</html>
