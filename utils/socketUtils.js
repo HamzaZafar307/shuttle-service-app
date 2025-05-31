@@ -341,19 +341,19 @@ const startSimulationInterval = (updateCallback) => {
         };
         
         // Log vehicle movement for debugging
-        console.log(`Vehicle ${vehicle.id} moved:`, {
-          from: {
-            lat: currentPoint.latitude.toFixed(6),
-            lng: currentPoint.longitude.toFixed(6)
-          },
-          heading: bearing,
-          routeIndex: vehicle.currentRouteIndex,
-          routeLength: route.length,
-          to: {
-            lat: nextPoint.latitude.toFixed(6),
-            lng: nextPoint.longitude.toFixed(6)
-          }
-        });
+        // console.log(`Vehicle ${vehicle.id} moved:`, {
+        //   from: {
+        //     lat: currentPoint.latitude.toFixed(6),
+        //     lng: currentPoint.longitude.toFixed(6)
+        //   },
+        //   heading: bearing,
+        //   routeIndex: vehicle.currentRouteIndex,
+        //   routeLength: route.length,
+        //   to: {
+        //     lat: nextPoint.latitude.toFixed(6),
+        //     lng: nextPoint.longitude.toFixed(6)
+        //   }
+        // });
         
         // Update vehicle with new location and bearing
         return {

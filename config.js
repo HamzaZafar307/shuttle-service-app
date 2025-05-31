@@ -13,10 +13,10 @@ export const SOCKET_CONFIG = {
   // For iOS simulator, use localhost
   // For physical devices, use your computer's IP address on the network
   SERVER_URL: Platform.select({
-    web: 'http://192.168.225.230:3001',
-    android: 'http://192.168.225.230:3001', // Using current IP address
-    ios: 'http://192.168.225.230:3001',     // Using current IP address
-    default: 'http://192.168.225.230:3001'  // Fallback for any other platform
+    web: 'http://192.168.18.74:3001',
+    android: 'http://192.168.18.74:3001', // Using current IP address
+    ios: 'http://192.168.18.74:3001',     // Using current IP address
+    default: 'http://192.168.18.74:3001'  // Fallback for any other platform
   }),
   OPTIONS: {
     reconnectionDelayMax: 10000,

@@ -220,24 +220,25 @@ export default function App() {
           vehicleId: updatedVehicle.id
         };
         
-        // If we have route coordinates, fetch the path from user location to start point
+        // COMMENTED OUT: Fetch path from user location to start point
+        // The following code was commented out to remove the yellow path line
+        // from user location to station start point
+        /*
         if (newRouteInfo && newRouteInfo.route && newRouteInfo.route.coordinates && 
             newRouteInfo.route.coordinates.length > 0) {
           
-          // Import the fetchDirections function from mapService
           const { fetchDirections } = require('./services/mapService');
           
-          // Fetch directions from user location to route start
           const userToStartDirections = await fetchDirections(
             userLocation,
             newRouteInfo.route.coordinates[0]
           );
           
-          // Add the path to the route info
           if (userToStartDirections && userToStartDirections.coordinates) {
             newRouteInfo.userToStartPath = userToStartDirections.coordinates;
           }
         }
+        */
         
         console.log('Generated route info for vehicle:', updatedVehicle.id, newRouteInfo);
         setRouteInfo(newRouteInfo);
@@ -272,24 +273,25 @@ export default function App() {
           vehicleId: updatedVehicle.id
         };
         
-        // If we have route coordinates, fetch the path from user location to start point
+        // COMMENTED OUT: Fetch path from user location to start point
+        // The following code was commented out to remove the yellow path line
+        // from user location to station start point
+        /*
         if (newRouteInfo && newRouteInfo.route && newRouteInfo.route.coordinates && 
             newRouteInfo.route.coordinates.length > 0) {
           
-          // Import the fetchDirections function from mapService
           const { fetchDirections } = require('./services/mapService');
           
-          // Fetch directions from user location to route start
           const userToStartDirections = await fetchDirections(
             userLocation,
             newRouteInfo.route.coordinates[0]
           );
           
-          // Add the path to the route info
           if (userToStartDirections && userToStartDirections.coordinates) {
             newRouteInfo.userToStartPath = userToStartDirections.coordinates;
           }
         }
+        */
         
         console.log('Generated route info for vehicle:', updatedVehicle.id, newRouteInfo);
         setRouteInfo(newRouteInfo);

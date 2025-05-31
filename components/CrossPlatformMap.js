@@ -65,8 +65,8 @@ const CrossPlatformMap = ({
     ? vehicles.filter(v => v.id === routeInfo.vehicleId) 
     : vehicles;
   
-  console.log('RouteInfo:', routeInfo);
-  console.log('All vehicles:', vehicles.map(v => ({ id: v.id, name: v.name, location: v.location })));
+  // console.log('RouteInfo:', routeInfo);
+  // console.log('All vehicles:', vehicles.map(v => ({ id: v.id, name: v.name, location: v.location })));
   
   // Determine map region based on selected route or user location
   const mapRegion = routeInfo && routeInfo.route && routeInfo.route.coordinates && 
@@ -152,7 +152,8 @@ const CrossPlatformMap = ({
           />
         )}
         
-        {/* Render path from user location to route start if routeInfo is available */}
+        {/* COMMENTED OUT: Render path from user location to route start if routeInfo is available */}
+        {/* 
         {routeInfo && routeInfo.route && routeInfo.route.coordinates && 
          routeInfo.route.coordinates.length > 0 && location && routeInfo.userToStartPath && (
           <NativePolyline
@@ -162,6 +163,7 @@ const CrossPlatformMap = ({
             strokeDashPattern={[5, 5]} // Dashed line pattern
           />
         )}
+        */}
 
         {/* Render route start and end markers if routeInfo is available */}
         {routeInfo && routeInfo.route && routeInfo.route.coordinates && 
@@ -223,10 +225,12 @@ const CrossPlatformMap = ({
               <View style={[styles.legendColor, { backgroundColor: '#3498db' }]} />
               <Text style={styles.legendText}>Bus Route</Text>
             </View>
+            {/* COMMENTED OUT: Path to Route legend item
             <View style={styles.legendItem}>
               <View style={[styles.legendColor, { backgroundColor: '#f39c12', borderStyle: 'dashed', borderWidth: 1 }]} />
               <Text style={styles.legendText}>Path to Route</Text>
             </View>
+            */}
           </View>
         )}
       </View>

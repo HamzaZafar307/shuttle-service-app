@@ -36,11 +36,11 @@ const NativeMarker = ({
   }
   
   // Log marker rendering for debugging
-  console.log(`Rendering marker for ${title}:`, {
-    coordinate,
-    vehicleType,
-    heading
-  });
+  // console.log(`Rendering marker for ${title}:`, {
+  //   coordinate,
+  //   vehicleType,
+  //   heading
+  // });
   // Get marker color based on pinColor
   const getMarkerColor = () => {
     switch(pinColor) {
@@ -66,13 +66,13 @@ const NativeMarker = ({
   if (Platform.OS === 'android') {
     // Log marker details for debugging
     if (isVehicle) {
-      console.log('Rendering vehicle marker:', {
-        title,
-        coordinate,
-        isVehicle,
-        vehicleType,
-        heading
-      });
+      // console.log('Rendering vehicle marker:', {
+      //   title,
+      //   coordinate,
+      //   isVehicle,
+      //   vehicleType,
+      //   heading
+      // });
     }
     
     // Use different marker approach for Android

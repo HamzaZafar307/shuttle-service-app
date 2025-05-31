@@ -242,7 +242,8 @@ const WebMap = ({
           />
         )}
         
-        {/* Path from current location to route start */}
+        {/* COMMENTED OUT: Path from current location to route start */}
+        {/* 
         {routeCoordinates.length > 0 && (
           <Polyline
             path={[
@@ -257,6 +258,7 @@ const WebMap = ({
             }}
           />
         )}
+        */}
         
         {/* Route start point marker */}
         {routeCoordinates.length > 0 && (

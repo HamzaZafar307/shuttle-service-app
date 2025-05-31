@@ -100,7 +100,7 @@ export const startVehicleSimulation = async (vehicles, userLocation, updateCallb
           // Calculate bearing (direction) between points
           const bearing = calculateBearing(currentPoint, nextPoint);
           
-          // Increment progress
+          // Increment progressconsole.log
           vehicle.progress += 0.01; // Move 1% of the way to the next point each update
           
           // If progress reaches or exceeds 1, move to the next point
@@ -123,7 +123,7 @@ export const startVehicleSimulation = async (vehicles, userLocation, updateCallb
                 vehicle.currentRouteIndex = 0;
               }
               
-              console.log(`${vehicle.name} changed direction to ${vehicle.direction === 1 ? 'forward' : 'backward'}`);
+              (`${vehicle.name} changed direction to ${vehicle.direction === 1 ? 'forward' : 'backward'}`);
             }
             
             // Return the exact next point
@@ -142,7 +142,7 @@ export const startVehicleSimulation = async (vehicles, userLocation, updateCallb
           };
           
           // Log movement for debugging
-          console.log(`${vehicle.name} moving from ${JSON.stringify(currentPoint)} to ${JSON.stringify(nextPoint)}, progress: ${vehicle.progress.toFixed(2)}, heading: ${bearing.toFixed(2)}`);
+          // console.log(`${vehicle.name} moving from ${JSON.stringify(currentPoint)} to ${JSON.stringify(nextPoint)}, progress: ${vehicle.progress.toFixed(2)}, heading: ${bearing.toFixed(2)}`);
           
           // Update vehicle with new location and bearing
           return {
@@ -167,16 +167,16 @@ export const startVehicleSimulation = async (vehicles, userLocation, updateCallb
     });
     
     // Log vehicle positions for debugging
-    console.log('Updated vehicle positions:', 
-      simulatedVehicles.map(v => ({
-        id: v.id,
-        name: v.name,
-        lat: v.location.latitude,
-        lng: v.location.longitude,
-        heading: v.heading,
-        progress: v.progress
-      }))
-    );
+    // console.log('Updated vehicle positions:', 
+    //   simulatedVehicles.map(v => ({
+    //     id: v.id,
+    //     name: v.name,
+    //     lat: v.location.latitude,
+    //     lng: v.location.longitude,
+    //     heading: v.heading,
+    //     progress: v.progress
+    //   }))
+    // );
     
     // Call the update callback with the updated vehicles
     if (updateCallback) {

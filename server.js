@@ -132,42 +132,57 @@ function generateVehicles(centerLocation, count = 5) {
   
   const vehicles = [];
   
-  // Limit count to the number of available routes
-  const actualCount = Math.min(count, BUS_ROUTES.length);
+  // Define how many buses per route (comment out extra buses for routes 4 and 5)
+  const busesPerRoute = {
+    'route-1': 5,
+    'route-2': 5,
+    'route-3': 5,
+    'route-4': 3, // Limited to 3 buses
+    'route-5': 3  // Limited to 3 buses
+    // Extra buses for route 4 and 5 are commented out
+    // 'route-4': 5, // Commented out extra buses
+    // 'route-5': 5  // Commented out extra buses
+  };
   
-  for (let i = 0; i < actualCount; i++) {
-    // Use the predefined route data
-    const routeData = BUS_ROUTES[i];
+  let vehicleCounter = 0;
+  
+  // Generate vehicles for each route
+  BUS_ROUTES.forEach((routeData, routeIndex) => {
+    const numBuses = busesPerRoute[routeData.id] || 1;
     
-    // Use the start coordinates from the route data if available
-    let location;
-    if (routeData.startCoordinates) {
-      // Add a small random offset to avoid all vehicles being at the exact same spot
-      location = {
-        latitude: routeData.startCoordinates.latitude + (Math.random() - 0.5) * 0.001,
-        longitude: routeData.startCoordinates.longitude + (Math.random() - 0.5) * 0.001
-      };
-    } else {
-      // Generate a random location within 3km of the center
-      location = {
-        latitude: centerLocation.latitude + (Math.random() - 0.5) * 0.03,
-        longitude: centerLocation.longitude + (Math.random() - 0.5) * 0.03
-      };
+    for (let busIndex = 0; busIndex < numBuses; busIndex++) {
+      // Use the start coordinates from the route data if available
+      let location;
+      if (routeData.startCoordinates) {
+        // Add a small random offset to avoid all vehicles being at the exact same spot
+        location = {
+          latitude: routeData.startCoordinates.latitude + (Math.random() - 0.5) * 0.001,
+          longitude: routeData.startCoordinates.longitude + (Math.random() - 0.5) * 0.001
+        };
+      } else {
+        // Generate a random location within 3km of the center
+        location = {
+          latitude: centerLocation.latitude + (Math.random() - 0.5) * 0.03,
+          longitude: centerLocation.longitude + (Math.random() - 0.5) * 0.03
+        };
+      }
+      
+      vehicles.push({
+        id: `vehicle-${vehicleCounter}`,
+        name: `${routeData.name}-${busIndex + 1}`,
+        type: 'bus',
+        route: routeData.name,
+        routeId: routeData.id,
+        stops: routeData.stops,
+        speed: 20 + Math.floor(Math.random() * 40), // 20-60 km/h
+        heading: Math.floor(Math.random() * 360),
+        location: location,
+        lastUpdated: new Date().toISOString()
+      });
+      
+      vehicleCounter++;
     }
-    
-    vehicles.push({
-      id: `vehicle-${i}`,
-      name: `Bus ${i+1}`,
-      type: 'bus',
-      route: routeData.name,
-      routeId: routeData.id,
-      stops: routeData.stops,
-      speed: 20 + Math.floor(Math.random() * 40), // 20-60 km/h
-      heading: Math.floor(Math.random() * 360),
-      location: location,
-      lastUpdated: new Date().toISOString()
-    });
-  }
+  });
   
   return vehicles;
 }
