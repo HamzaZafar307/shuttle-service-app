@@ -373,22 +373,10 @@ export default function App() {
           {selectedVehicle && (
             <View style={styles.vehicleDetailsPanel}>
               <View style={styles.vehicleDetailsPanelHeader}>
-                <View style={styles.vehicleHeaderLeft}>
+                <View style={styles.vehicleHeaderCentered}>
                   <Text style={styles.vehicleName}>{selectedVehicle.name}</Text>
                   <View style={styles.vehicleBadge}>
                     <Text style={styles.vehicleBadgeText}>{selectedVehicle.type || 'bus'}</Text>
-                  </View>
-                </View>
-                
-                <View style={styles.vehicleStats}>
-                  <View style={styles.vehicleStatItem}>
-                    <Text style={styles.vehicleStatLabel}>Speed</Text>
-                    <Text style={styles.vehicleStatValue}>{(selectedVehicle.speed || 0).toFixed(1)} km/h</Text>
-                  </View>
-                  
-                  <View style={styles.vehicleStatItem}>
-                    <Text style={styles.vehicleStatLabel}>Stops</Text>
-                    <Text style={styles.vehicleStatValue}>{selectedVehicle.stops || 0}</Text>
                   </View>
                 </View>
               </View>
@@ -577,6 +565,11 @@ const styles = StyleSheet.create({
   vehicleHeaderLeft: {
     flex: 1,
   },
+  vehicleHeaderCentered: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   vehicleName: {
     fontFamily: FONTS.SCANDIA.REGULAR,
     fontSize: 22,
@@ -589,7 +582,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
-    alignSelf: 'flex-start',
+    alignSelf: 'center',
   },
   vehicleBadgeText: {
     fontFamily: FONTS.SCANDIA.REGULAR,

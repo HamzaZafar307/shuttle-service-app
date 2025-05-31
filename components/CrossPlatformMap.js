@@ -117,7 +117,7 @@ const CrossPlatformMap = ({
                 longitude: vehicle.location.longitude,
               }}
               title={vehicle.name}
-              description={`Speed: ${vehicle.speed} km/h`}
+              description={vehicle.name}
               pinColor="blue"
               onPress={() => onSelectVehicle && onSelectVehicle(vehicle)}
               heading={vehicle.heading}
